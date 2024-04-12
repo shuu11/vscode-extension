@@ -1,0 +1,96 @@
+{
+	"name": "test",
+	"displayName": "test",
+	"description": "test-extension",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.88.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [],
+	"main": "./out/extension.js",
+	"enabledApiProposals": [
+		"inlineCompletionsAdditions"
+	],
+	"contributes": {
+		"commands": [
+			{
+				"command": "test.helloWorld",
+				"title": "Hello World"
+			},
+			{
+				"title": "Enable CodeLens",
+				"command": "codelens-sample.enableCodeLens",
+				"category": "CodeLens Sample"
+			},
+			{
+				"title": "Disable Codelens",
+				"command": "codelens-sample.disableCodeLens",
+				"category": "CodeLens Sample"
+			},
+			{
+				"command": "test.editDoc",
+				"title": "editDoc"
+			},
+			{
+				"command": "extension.inline-completion-settings",
+				"title": "My Inline Completion Demo Settings"
+			}
+		],
+		"menus": {
+			"editor/inlineCompletions/actions": [
+				{
+					"command": "extension.inline-completion-settings"
+				}
+			]
+		},
+		"colors": [
+			{
+				"id": "myextension.largeNumberBackground",
+				"description": "Background decoration color for large numbers",
+				"defaults": {
+					"dark": "#FF000055",
+					"light": "#FF000055",
+					"highContrast": "#FF000055"
+				}
+			}
+		],
+		"configuration": {
+			"properties": {
+				"codelens-sample.enableCodeLens": {
+					"type": "boolean",
+					"default": true
+				}
+			}
+		},
+		"keybindings": [
+			{
+				"command": "test.helloWorld",
+				"key": "ctrl+shift+1",
+				"mac": "cmd+shift+1",
+				"when": "editorTextFocus"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "vscode-test"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.88.0",
+		"@types/mocha": "^10.0.6",
+		"@types/node": "18.x",
+		"@typescript-eslint/eslint-plugin": "^7.4.0",
+		"@typescript-eslint/parser": "^7.4.0",
+		"eslint": "^8.57.0",
+		"typescript": "^5.3.3",
+		"@vscode/test-cli": "^0.0.8",
+		"@vscode/test-electron": "^2.3.9"
+	}
+}
